@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/slsa_mm/R2020a">
+  <slsa.mm.MaskTree type="slsa.mm.MaskTree" uuid="cdb3c717-280b-4a0c-95d7-edf9124912e1">
+    <maskedBlocks type="slsa.mm.MaskedBlock" uuid="cc6db732-d061-45ab-a143-5d97315c654b">
+      <childrenIds>untitled:5</childrenIds>
+      <childrenIds>untitled:8</childrenIds>
+      <id>root</id>
+    </maskedBlocks>
+    <maskedBlocks type="slsa.mm.MaskedBlock" uuid="e0cdd2de-2d5a-4173-8b0f-b65f4d1254f6">
+      <blockPath>untitled/High Level Carrier</blockPath>
+      <id>untitled:5</id>
+      <masks type="slsa.mm.Mask" uuid="268a68b0-8131-4e08-b36a-4ea063cf7e1f">
+        <cachedVariables type="slsa.mm.Variable" uuid="9e6580fb-ff5f-45bb-8d6c-b3127e1612ef">
+          <name>period</name>
+          <value>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAAAAEAAAABAAAAAQAAAAAAAAAJAAAACAAAAPyp8dJNYlA/</value>
+        </cachedVariables>
+        <cachedVariables type="slsa.mm.Variable" uuid="5cb186df-090a-4c97-9dc5-8eb95d4f0ba7">
+          <name>rep_seq_t</name>
+          <value>AAFJTQAAAAAOAAAAQAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAAAAEAAAACAAAAAQAAAAAAAAAJAAAAEAAAAAAAAAAAAAAA/Knx0k1iUD8=</value>
+        </cachedVariables>
+        <cachedVariables type="slsa.mm.Variable" uuid="0d8a1acb-895f-4d3a-b8db-c9aee067ce12">
+          <name>rep_seq_y</name>
+          <value>AAFJTQAAAAAOAAAAQAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAAAAEAAAACAAAAAQAAAAAAAAAJAAAAEAAAAAAAAAAAABRAAAAAAAAAGEA=</value>
+        </cachedVariables>
+        <dialogParameters type="slsa.mm.DialogParameterInfo" uuid="1230056c-f35f-4004-92ab-e7fb092f2dc2">
+          <evaluate>true</evaluate>
+          <expression>[0 1/carrier_frequency]</expression>
+          <isTunable>true</isTunable>
+          <name>rep_seq_t</name>
+          <referencedVariables type="slsa.mm.Variable" uuid="9ca05fe6-1c97-4c8e-be07-477c81af539f">
+            <name>carrier_frequency</name>
+            <value></value>
+            <workspace>global-workspace</workspace>
+          </referencedVariables>
+        </dialogParameters>
+        <dialogParameters type="slsa.mm.DialogParameterInfo" uuid="04f2529f-96b9-4ba1-a382-27ed8d5ce6b6">
+          <evaluate>true</evaluate>
+          <expression>[high_carrier_level high_carrier_amplitude]</expression>
+          <isTunable>true</isTunable>
+          <name>rep_seq_y</name>
+          <referencedVariables type="slsa.mm.Variable" uuid="6786c031-b0b1-4ea0-ab6c-6eb59d372fbe">
+            <name>high_carrier_level</name>
+            <value></value>
+            <workspace>global-workspace</workspace>
+          </referencedVariables>
+          <referencedVariables type="slsa.mm.Variable" uuid="70df7d62-cbdb-454e-bbbb-f2eee5abaf3e">
+            <name>high_carrier_amplitude</name>
+            <value></value>
+            <workspace>global-workspace</workspace>
+          </referencedVariables>
+        </dialogParameters>
+        <initializationCode>X = [];
+Y = [];
+if (length(rep_seq_t) ~= length(rep_seq_y)),
+  error(&apos;Length of time vector and output vector must be the same.&apos;)
+end
+dbl_rep_seq_t = double(rep_seq_t);
+dbl_rep_seq_y = double(rep_seq_y);
+period = max(dbl_rep_seq_t) - min(dbl_rep_seq_t);
+period = slResolve(sprintf(&apos;%0.5g&apos;,period), gcbh);
+[X, Y] = genRepeatingSequenceBlockIconData(dbl_rep_seq_t, dbl_rep_seq_y);
+</initializationCode>
+      </masks>
+      <parentId>root</parentId>
+    </maskedBlocks>
+    <maskedBlocks type="slsa.mm.MaskedBlock" uuid="d2e65f5f-e9af-4854-b921-4324e6f73e50">
+      <blockPath>untitled/Low Level Carrier1</blockPath>
+      <id>untitled:8</id>
+      <masks type="slsa.mm.Mask" uuid="3aa5540a-820e-4239-a79c-76f0f3e9fec4">
+        <cachedVariables type="slsa.mm.Variable" uuid="2de9398b-655f-4a10-9eeb-32853b34b4b6">
+          <name>period</name>
+          <value>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAAAAEAAAABAAAAAQAAAAAAAAAJAAAACAAAAPyp8dJNYlA/</value>
+        </cachedVariables>
+        <cachedVariables type="slsa.mm.Variable" uuid="b6cd5c2b-0ab8-4e77-a4c4-cf606f83adf8">
+          <name>rep_seq_t</name>
+          <value>AAFJTQAAAAAOAAAAQAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAAAAEAAAACAAAAAQAAAAAAAAAJAAAAEAAAAAAAAAAAAAAA/Knx0k1iUD8=</value>
+        </cachedVariables>
+        <cachedVariables type="slsa.mm.Variable" uuid="0efb4e44-4bcd-4b08-a06f-a59b838c995e">
+          <name>rep_seq_y</name>
+          <value>AAFJTQAAAAAOAAAAQAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAAAAEAAAACAAAAAQAAAAAAAAAJAAAAEAAAAAAAAAAAAPC/AAAAAAAAGEA=</value>
+        </cachedVariables>
+        <dialogParameters type="slsa.mm.DialogParameterInfo" uuid="addbb289-c069-424b-bb3e-b1c1d175953d">
+          <evaluate>true</evaluate>
+          <expression>[0 1/carrier_frequency]</expression>
+          <isTunable>true</isTunable>
+          <name>rep_seq_t</name>
+          <referencedVariables type="slsa.mm.Variable" uuid="52e8a7ab-1dd5-491d-81e6-ca66d6faf481">
+            <name>carrier_frequency</name>
+            <value></value>
+            <workspace>global-workspace</workspace>
+          </referencedVariables>
+        </dialogParameters>
+        <dialogParameters type="slsa.mm.DialogParameterInfo" uuid="cd5d3dd7-ab25-423d-9018-050d3cb0dcf7">
+          <evaluate>true</evaluate>
+          <expression>[low_carrier_level low_carrier_amplitude]</expression>
+          <isTunable>true</isTunable>
+          <name>rep_seq_y</name>
+          <referencedVariables type="slsa.mm.Variable" uuid="8b346b0c-bbb2-4e5d-aaa7-89105980b402">
+            <name>low_carrier_level</name>
+            <value></value>
+            <workspace>global-workspace</workspace>
+          </referencedVariables>
+          <referencedVariables type="slsa.mm.Variable" uuid="d4b0782b-bb46-4f1e-a145-73daa823897b">
+            <name>low_carrier_amplitude</name>
+            <value></value>
+            <workspace>global-workspace</workspace>
+          </referencedVariables>
+        </dialogParameters>
+        <initializationCode>X = [];
+Y = [];
+if (length(rep_seq_t) ~= length(rep_seq_y)),
+  error(&apos;Length of time vector and output vector must be the same.&apos;)
+end
+dbl_rep_seq_t = double(rep_seq_t);
+dbl_rep_seq_y = double(rep_seq_y);
+period = max(dbl_rep_seq_t) - min(dbl_rep_seq_t);
+period = slResolve(sprintf(&apos;%0.5g&apos;,period), gcbh);
+[X, Y] = genRepeatingSequenceBlockIconData(dbl_rep_seq_t, dbl_rep_seq_y);
+</initializationCode>
+      </masks>
+      <parentId>root</parentId>
+    </maskedBlocks>
+    <referencedGlobalWorkspaceVariables type="slsa.mm.Variable" uuid="9370d00d-ad53-40d2-b0d4-514484a03da3">
+      <name>carrier_frequency</name>
+      <value>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAAAAEAAAABAAAAAQAAAAAAAAAJAAAACAAAAAAAAAAAQI9A</value>
+      <workspace>global-workspace</workspace>
+    </referencedGlobalWorkspaceVariables>
+    <referencedGlobalWorkspaceVariables type="slsa.mm.Variable" uuid="b794d145-80e6-43e3-a89b-135d8851a493">
+      <name>high_carrier_amplitude</name>
+      <value>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAAAAEAAAABAAAAAQAAAAAAAAAJAAAACAAAAAAAAAAAABhA</value>
+      <workspace>global-workspace</workspace>
+    </referencedGlobalWorkspaceVariables>
+    <referencedGlobalWorkspaceVariables type="slsa.mm.Variable" uuid="6635bc10-0b9d-42fb-a483-b6f543b258dd">
+      <name>high_carrier_level</name>
+      <value>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAAAAEAAAABAAAAAQAAAAAAAAAJAAAACAAAAAAAAAAAABRA</value>
+      <workspace>global-workspace</workspace>
+    </referencedGlobalWorkspaceVariables>
+    <referencedGlobalWorkspaceVariables type="slsa.mm.Variable" uuid="fb7ac13f-918b-45cf-9af7-957da7b16ab6">
+      <name>low_carrier_amplitude</name>
+      <value>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAAAAEAAAABAAAAAQAAAAAAAAAJAAAACAAAAAAAAAAAABhA</value>
+      <workspace>global-workspace</workspace>
+    </referencedGlobalWorkspaceVariables>
+    <referencedGlobalWorkspaceVariables type="slsa.mm.Variable" uuid="b2265c8d-e807-424a-826b-d26de47099a4">
+      <name>low_carrier_level</name>
+      <value>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAAAAEAAAABAAAAAQAAAAAAAAAJAAAACAAAAAAAAAAAAPC/</value>
+      <workspace>global-workspace</workspace>
+    </referencedGlobalWorkspaceVariables>
+    <flags type="slsa.mm.MaskTreeFlags" uuid="46c669e0-229f-4565-96e0-5cab9df5fa28"/>
+  </slsa.mm.MaskTree>
+</MF0>
